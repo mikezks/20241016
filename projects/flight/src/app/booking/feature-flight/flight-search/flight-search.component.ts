@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EnvironmentInjector, inject, runInInjectionContext } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { FlightService } from '../../api-boarding';
 import { Flight, FlightFilter, injectTicketsFacade } from '../../logic-flight';
 import { FlightCardComponent, FlightFilterComponent } from '../../ui-flight';
 
@@ -14,10 +15,12 @@ import { FlightCardComponent, FlightFilterComponent } from '../../ui-flight';
     FlightFilterComponent
   ],
   selector: 'app-flight-search',
-  templateUrl: './flight-search.component.html',
+  templateUrl: './flight-search.component.html'
 })
 export class FlightSearchComponent {
   private ticketsFacade = injectTicketsFacade();
+  private injector = inject(EnvironmentInjector);
+  private flightService = inject(FlightService);
 
   protected filter = {
     from: 'London',
@@ -31,6 +34,10 @@ export class FlightSearchComponent {
   protected flights$ = this.ticketsFacade.flights$;
 
   protected search(filter: FlightFilter): void {
+    const myFlightService = runInInjectionContext(this.injector, () => inject(FlightService));
+    // console.log(myFlightService.flights);
+    console.log(this.injector.get(FlightService).flights);
+
     this.filter = filter;
 
     if (!this.filter.from || !this.filter.to) {
