@@ -33,12 +33,6 @@ export class FlightEditComponent implements OnChanges {
       params => console.log(params)
     );
 
-    this.editForm.patchValue({
-      from: '999'
-    });
-
-    this.editForm.getRawValue()
-
     /* this.route.data.subscribe(data => {
       const flight = data['flight'];
 

@@ -17,10 +17,10 @@ export const appConfig: ApplicationConfig = {
       // withDisabledInitialNavigation()
     ),
     provideHttpClient(
-      withInterceptors([
-        authInterceptor
-      ]),
-      withInterceptorsFromDi()
+      // withInterceptors([
+      //   authInterceptor
+      // ]),
+      // withInterceptorsFromDi()
     ),
     provideStore(),
     provideEffects(),

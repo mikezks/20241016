@@ -16,10 +16,6 @@ export const BOOKING_ROUTES: Routes = [
     providers: [
       provideState(ticketFeature),
       provideEffects([TicketEffects]),
-      provideHttpClient(
-        withInterceptorsFromDi(),
-        withRequestsMadeViaParent()
-      ),
     ],
     children: [
       {
