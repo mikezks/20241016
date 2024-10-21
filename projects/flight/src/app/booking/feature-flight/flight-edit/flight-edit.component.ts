@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges, inject } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, inject, input, numberAttribute } from '@angular/core';
 import { FormBuilder, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { routerFeature } from '../../../shared/logic-router-state';
@@ -17,6 +17,8 @@ import { ActivatedRoute } from '@angular/router';
 export class FlightEditComponent implements OnChanges {
   private store = inject(Store);
   private route = inject(ActivatedRoute);
+
+  id = input<number, string>(0, { transform: numberAttribute })
 
   @Input() flight = initialFlight;
 

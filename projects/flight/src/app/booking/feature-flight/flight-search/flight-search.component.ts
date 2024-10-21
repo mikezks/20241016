@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Flight, FlightFilter, injectTicketsFacade } from '../../logic-flight';
 import { FlightCardComponent, FlightFilterComponent } from '../../ui-flight';
 import { SIGNAL } from '@angular/core/primitives/signals';
+import { FlightService } from '../../api-boarding';
 
 
 @Component({
